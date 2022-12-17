@@ -4,10 +4,11 @@ import { register } from '../../functions/auth'
 
 //Redux
 import { useCallback } from 'react';
+import FileUpload from './FileUpload';
 
 
 const Register = () => {
-    const navigate = useNavigate();
+    const navigate = useNavigate(); 
 
     const [value, setValue] = useState({
         username: "",
@@ -19,6 +20,7 @@ const Register = () => {
         height: "",
         weight: "",
         address: "",
+        images: []
     })
 
     const OnLoginClick = useCallback(()=>{
@@ -83,6 +85,8 @@ const Register = () => {
             <label>Address</label>
             <input type="text" name="address" onChange={handleChange}/>
             <br />
+
+            < FileUpload value={value} setValue={setValue}/>
 
             <button className = 'confirm' disabled={value.password.length < 8}>Confirm</button>
             <button className='cancel'onClick = {OnLoginClick}>Cancel</button>
